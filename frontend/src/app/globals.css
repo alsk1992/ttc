@@ -8,7 +8,24 @@
   }
   
   body {
-    @apply h-full bg-gray-50 text-gray-900;
+    @apply h-full text-gray-100;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
   }
 }
 
@@ -42,11 +59,21 @@
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md border border-gray-200;
+    @apply bg-white/80 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200/50;
+    background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
   }
   
   .input {
-    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500;
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 transition-all duration-200;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+  }
+  
+  .input:focus {
+    @apply ring-2 ring-primary-500 border-primary-500;
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
   .game-cell {

@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Users, Clock, Coins, RefreshCw } from 'lucide-react';
+import { Users, Clock, Coins, RefreshCw, Search } from 'lucide-react';
 import toast from 'react-hot-toast';
 import clsx from 'clsx';
 
@@ -17,6 +17,7 @@ export function GameList() {
   const [games, setGames] = useState<GameListItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isJoining, setIsJoining] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const fetchGames = async () => {
     if (!connected) return;
@@ -80,22 +81,50 @@ export function GameList() {
     return `${Math.floor(diffInSeconds / 86400)}d ago`;
   };
 
+  const filteredGames = useMemo(() => {
+    if (!searchTerm.trim()) return games;
+    
+    const searchLower = searchTerm.toLowerCase();
+    return games.filter((game) => {
+      const player1Lower = game.player1.toLowerCase();
+      const betAmount = formatSol(game.betAmount, 4);
+      
+      return (
+        player1Lower.includes(searchLower) ||
+        betAmount.includes(searchLower) ||
+        game.id.toLowerCase().includes(searchLower)
+      );
+    });
+  }, [games, searchTerm]);
+
   if (!connected) {
     return null;
   }
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <h2 className="text-xl font-semibold text-gray-900">Available Games</h2>
-        <button
-          onClick={fetchGames}
-          disabled={isLoading}
-          className="btn-secondary flex items-center gap-2"
-        >
-          <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-          Refresh
-        </button>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="relative flex-1 sm:flex-none sm:w-64">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search games..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="input pl-10 w-full"
+            />
+          </div>
+          <button
+            onClick={fetchGames}
+            disabled={isLoading}
+            className="btn-secondary flex items-center gap-2 whitespace-nowrap"
+          >
+            <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+            Refresh
+          </button>
+        </div>
       </div>
 
       {isLoading ? (
@@ -109,20 +138,29 @@ export function GameList() {
             </div>
           ))}
         </div>
-      ) : games.length === 0 ? (
+      ) : filteredGames.length === 0 ? (
         <div className="text-center py-12">
           <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No games available</h3>
-          <p className="text-gray-500">Create a new game to get started!</p>
+          {searchTerm.trim() ? (
+            <>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No games found</h3>
+              <p className="text-gray-500">No games match your search "{searchTerm}"</p>
+            </>
+          ) : (
+            <>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No games available</h3>
+              <p className="text-gray-500">Create a new game to get started!</p>
+            </>
+          )}
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {games.map((game) => {
+          {filteredGames.map((game) => {
             const canJoin = game.player1 !== publicKey?.toString();
             const isCurrentlyJoining = isJoining === game.id;
 
             return (
-              <div key={game.id} className="card p-6 hover:shadow-lg transition-shadow">
+              <div key={game.id} className="card p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center">
                     <Users className="h-5 w-5 text-gray-400 mr-2" />

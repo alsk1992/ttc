@@ -60,13 +60,13 @@ class WebSocketManager {
 
   on<K extends keyof WebSocketEvents>(event: K, callback: WebSocketEvents[K]): void {
     if (this.socket) {
-      this.socket.on(event, callback);
+      this.socket.on(event as string, callback as any);
     }
   }
 
   off<K extends keyof WebSocketEvents>(event: K, callback?: WebSocketEvents[K]): void {
     if (this.socket) {
-      this.socket.off(event, callback);
+      this.socket.off(event as string, callback as any);
     }
   }
 
