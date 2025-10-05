@@ -17,7 +17,7 @@ class WebSocketManager {
       reconnection: true,
       reconnectionDelay: 1000,
       reconnectionDelayMax: 5000,
-      maxReconnectionAttempts: 5,
+      reconnectionAttempts: 5,
     });
 
     this.socket.on('connect', () => {
