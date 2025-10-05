@@ -26,15 +26,15 @@
   }
   
   .btn-success {
-    @apply btn text-white bg-success-600 hover:bg-success-700 focus:ring-success-500;
+    @apply btn text-white bg-green-600 hover:bg-green-700 focus:ring-green-500;
   }
   
   .btn-warning {
-    @apply btn text-white bg-warning-600 hover:bg-warning-700 focus:ring-warning-500;
+    @apply btn text-white bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500;
   }
   
   .btn-error {
-    @apply btn text-white bg-error-600 hover:bg-error-700 focus:ring-error-500;
+    @apply btn text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
   }
   
   .btn-disabled {
@@ -62,11 +62,11 @@
   }
   
   .game-cell.o {
-    @apply text-error-600;
+    @apply text-red-600;
   }
   
   .game-cell.winning {
-    @apply bg-success-50 border-success-300;
+    @apply bg-green-50 border-green-300;
   }
 }
 
