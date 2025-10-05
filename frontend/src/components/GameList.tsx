@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Users, Clock, Coins, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
+import clsx from 'clsx';
 
 import { api, ApiError } from '@/lib/api';
 import { formatSol, shortenAddress } from '@/lib/solana';
