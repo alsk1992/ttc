@@ -1,0 +1,26 @@
+{
+  "name": "tic-tac-toe-solana",
+  "version": "1.0.0",
+  "description": "Solana tic-tac-toe program",
+  "scripts": {
+    "lint:fix": "cargo clippy --fix --allow-dirty --allow-staged",
+    "lint": "cargo clippy -- --deny=warnings",
+    "test": "anchor test",
+    "build": "anchor build",
+    "deploy:devnet": "anchor deploy --provider.cluster devnet",
+    "deploy:mainnet": "anchor deploy --provider.cluster mainnet"
+  },
+  "devDependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/web3.js": "^1.95.3",
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.4",
+    "mocha": "^9.0.3",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.30.1"
+  }
+}
