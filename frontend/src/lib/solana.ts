@@ -1,5 +1,5 @@
 import { Connection, PublicKey, clusterApiUrl, LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { Program, AnchorProvider, Wallet, web3 } from '@coral-xyz/anchor';
+import { Program, AnchorProvider, Wallet, web3, BN } from '@coral-xyz/anchor';
 
 // Configuration
 export const SOLANA_RPC_URL = process.env.NEXT_PUBLIC_SOLANA_RPC || clusterApiUrl('devnet');
@@ -55,7 +55,7 @@ export interface GameAccount {
   status: { active: {} } | { won: {} } | { draw: {} };
   winner: { x: {} } | { o: {} } | null;
   board: (({ x: {} } | { o: {} }) | null)[];
-  betAmount: web3.BN;
+  betAmount: BN;
   gameId: string;
 }
 
