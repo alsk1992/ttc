@@ -4,7 +4,12 @@ import { GameState, PlayerStats } from '../types';
 let pool: Pool;
 
 export async function initializeDatabase() {
-  const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/tic_tac_toe';
+  const connectionString = process.env.DATABASE_URL;
+  
+  if (!connectionString) {
+    console.error('DATABASE_URL environment variable is not set');
+    throw new Error('DATABASE_URL is required');
+  }
   
   pool = new Pool({
     connectionString,
@@ -12,6 +17,11 @@ export async function initializeDatabase() {
   });
 
   try {
+    // Test connection
+    const client = await pool.connect();
+    console.log('Database connection established');
+    client.release();
+    
     await createTables();
     console.log('Database initialized successfully');
   } catch (error) {
