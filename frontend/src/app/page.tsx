@@ -112,7 +112,7 @@ export default function HomePage() {
                 {/* Practice Mode */}
                 <div className="mb-6">
                   <p className="text-sm text-gray-400 mb-4">New to the game? Try practice mode first!</p>
-                  <div className="flex gap-3 justify-center">
+                  <div className="flex gap-3 justify-center flex-wrap">
                     <a
                       href="/practice?difficulty=easy"
                       className="px-4 py-2 bg-green-600/20 border border-green-500/50 text-green-400 rounded-lg hover:bg-green-600/30 transition-all"
@@ -130,6 +130,17 @@ export default function HomePage() {
                       className="px-4 py-2 bg-red-600/20 border border-red-500/50 text-red-400 rounded-lg hover:bg-red-600/30 transition-all"
                     >
                       🤖 Hard AI
+                    </a>
+                  </div>
+                  
+                  <div className="mt-4">
+                    <p className="text-sm text-gray-400 mb-4">Or try something new!</p>
+                    <a
+                      href="/game-3d"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500/50 text-purple-300 rounded-lg hover:from-purple-600/40 hover:to-pink-600/40 transition-all font-medium"
+                    >
+                      🎮 3D 4x4 Tic-Tac-Toe
+                      <span className="text-xs bg-purple-500/20 px-2 py-1 rounded">NEW!</span>
                     </a>
                   </div>
                 </div>
