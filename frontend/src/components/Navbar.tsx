@@ -11,14 +11,14 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-lg border-b border-gray-200">
+    <nav className="bg-gray-900/90 backdrop-blur-sm shadow-lg border-b border-gray-700/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 <Trophy className="h-8 w-8 text-primary-600" />
-                <span className="ml-2 text-xl font-bold text-gray-900">
+                <span className="ml-2 text-xl font-bold text-gray-100">
                   Solana Tic-Tac-Toe
                 </span>
               </div>
@@ -31,14 +31,14 @@ export function Navbar() {
               <>
                 <Link
                   href="/"
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
                 >
                   <Home className="h-4 w-4 mr-2" />
                   Lobby
                 </Link>
                 <Link
                   href="/history"
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
                 >
                   <History className="h-4 w-4 mr-2" />
                   History
@@ -55,7 +55,7 @@ export function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
             >
               {isMenuOpen ? (
                 <X className="block h-6 w-6" />
@@ -70,12 +70,12 @@ export function Navbar() {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50 border-t border-gray-200">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-800/90 backdrop-blur-sm border-t border-gray-700">
             {connected && (
               <>
                 <Link
                   href="/"
-                  className="flex items-center px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md"
+                  className="flex items-center px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Home className="h-5 w-5 mr-3" />
@@ -83,7 +83,7 @@ export function Navbar() {
                 </Link>
                 <Link
                   href="/history"
-                  className="flex items-center px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md"
+                  className="flex items-center px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <History className="h-5 w-5 mr-3" />

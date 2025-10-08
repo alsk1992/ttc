@@ -10,7 +10,24 @@ class WebSocketManager {
       return this.socket;
     }
 
-    const socketUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    // Use the same logic as API configuration
+    const getSocketUrl = () => {
+      if (process.env.NEXT_PUBLIC_API_URL) {
+        return process.env.NEXT_PUBLIC_API_URL;
+      }
+      
+      if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+        const currentUrl = window.location.origin;
+        if (currentUrl.includes('railway.app')) {
+          return currentUrl.replace('-frontend-', '-backend-').replace(/:\d+$/, '');
+        }
+      }
+      
+      return 'http://localhost:3001';
+    };
+    
+    const socketUrl = getSocketUrl();
+    console.log('🔌 Connecting WebSocket to:', socketUrl);
     
     this.socket = io(socketUrl, {
       autoConnect: true,
