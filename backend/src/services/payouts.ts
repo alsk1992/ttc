@@ -44,7 +44,7 @@ export async function processGamePayout(game: GameState): Promise<{
     }
 
     const gameWallet = getGameWallet();
-    const isWin = game.winner && game.winner !== 'draw';
+    const isWin = !!(game.winner && game.winner !== 'draw');
     const isDraw = game.winner === 'draw';
     
     // Calculate payouts
