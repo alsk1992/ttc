@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import { Trophy, RotateCcw, Users } from 'lucide-react';
+import { Trophy, RotateCcw, Users, ArrowLeft } from 'lucide-react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import toast from 'react-hot-toast';
 import dynamic from 'next/dynamic';
@@ -100,7 +100,7 @@ export function Game4x4({ mode, gameId, betAmount = 0 }: Game4x4Props) {
     } else {
       setCurrentTurn(currentTurn === 'X' ? 'O' : 'X');
     }
-  }, [board, currentTurn, gameStatus, mode, playerSymbol]);
+  }, [board, currentTurn, gameStatus, mode, playerSymbol, playSound]);
 
   // Simple AI for practice mode
   useEffect(() => {
@@ -127,6 +127,17 @@ export function Game4x4({ mode, gameId, betAmount = 0 }: Game4x4Props) {
 
   return (
     <div className="max-w-6xl mx-auto p-4">
+      {/* Back button */}
+      <div className="mb-6">
+        <a
+          href="/"
+          className="inline-flex items-center gap-2 text-gray-400 hover:text-gray-200 transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Lobby
+        </a>
+      </div>
+      
       {/* Header */}
       <div className="mb-6 text-center">
         <h1 className="text-4xl font-bold mb-2 flex items-center justify-center gap-3">

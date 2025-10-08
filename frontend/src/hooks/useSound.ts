@@ -8,8 +8,17 @@ export function useSound() {
   const audioContextRef = useRef<AudioContext | null>(null);
 
   const playSound = useCallback((type: SoundType) => {
-    if (!audioContextRef.current) {
-      audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') return;
+    
+    try {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+    } catch (error) {
+      // Audio might be blocked or unavailable
+      console.warn('Audio context not available:', error);
+      return;
     }
 
     const ctx = audioContextRef.current;

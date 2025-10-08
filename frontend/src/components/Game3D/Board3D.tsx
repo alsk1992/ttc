@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Box, Environment, ContactShadows } from '@react-three/drei';
+import { OrbitControls, Box } from '@react-three/drei';
 import * as THREE from 'three';
 import { XPiece, OPiece } from './Pieces3D';
 import { WinningParticles } from './Particles';
@@ -126,9 +126,6 @@ function GameBoard({ board, onCellClick, disabled, winningLine }: Board3DProps) 
       <pointLight position={[-10, 10, -10]} intensity={0.5} />
       <pointLight position={[0, -5, 0]} intensity={0.3} color="#60a5fa" />
       
-      {/* Environment for reflections */}
-      <Environment preset="city" />
-      
       {/* Board grid */}
       <group ref={boardRef} position={[0, 0, 0]}>
         {board.map((value, index) => {
@@ -157,7 +154,6 @@ function GameBoard({ board, onCellClick, disabled, winningLine }: Board3DProps) 
           color="#0f172a" 
           metalness={0.9} 
           roughness={0.1}
-          envMapIntensity={0.5}
         />
       </Box>
       
@@ -169,15 +165,6 @@ function GameBoard({ board, onCellClick, disabled, winningLine }: Board3DProps) 
           emissiveIntensity={0.2}
         />
       </Box>
-      
-      {/* Contact shadows for depth */}
-      <ContactShadows 
-        position={[0, -0.32, 0]} 
-        opacity={0.4} 
-        scale={10} 
-        blur={2} 
-        far={10}
-      />
       
       {/* Victory particles */}
       {showParticles && <WinningParticles count={200} />}
@@ -197,7 +184,6 @@ export function Board3D({ board, onCellClick, disabled, winningLine }: Board3DPr
           minDistance={5}
           maxDistance={12}
           maxPolarAngle={Math.PI / 2.2}
-          autoRotate={false}
           enableDamping
           dampingFactor={0.05}
         />
