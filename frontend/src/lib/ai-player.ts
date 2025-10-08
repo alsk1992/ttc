@@ -52,9 +52,9 @@ function minimax(
     for (let i = 0; i < 9; i++) {
       if (board[i] === null) {
         board[i] = aiPlayer;
-        const eval = minimax(board, depth + 1, false, aiPlayer, humanPlayer);
+        const score = minimax(board, depth + 1, false, aiPlayer, humanPlayer);
         board[i] = null;
-        maxEval = Math.max(maxEval, eval);
+        maxEval = Math.max(maxEval, score);
       }
     }
     return maxEval;
@@ -63,9 +63,9 @@ function minimax(
     for (let i = 0; i < 9; i++) {
       if (board[i] === null) {
         board[i] = humanPlayer;
-        const eval = minimax(board, depth + 1, true, aiPlayer, humanPlayer);
+        const score = minimax(board, depth + 1, true, aiPlayer, humanPlayer);
         board[i] = null;
-        minEval = Math.min(minEval, eval);
+        minEval = Math.min(minEval, score);
       }
     }
     return minEval;
@@ -149,11 +149,11 @@ export function getAIMove(
 
     for (const position of emptyPositions) {
       board[position] = aiPlayer;
-      const eval = minimax(board, 0, false, aiPlayer, humanPlayer);
+      const score = minimax(board, 0, false, aiPlayer, humanPlayer);
       board[position] = null;
 
-      if (eval > bestEval) {
-        bestEval = eval;
+      if (score > bestEval) {
+        bestEval = score;
         bestMove = position;
       }
     }
