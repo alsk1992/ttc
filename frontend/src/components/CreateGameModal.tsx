@@ -123,9 +123,9 @@ export function CreateGameModal({ isOpen, onClose }: CreateGameModalProps) {
                     <p className="font-medium mb-1">How betting works:</p>
                     <ul className="list-disc list-inside space-y-1 text-xs">
                       <li>Both players deposit the bet amount into the game</li>
-                      <li>Winner takes the entire pot (2x bet amount)</li>
-                      <li>In case of a draw, both players get their bet back</li>
-                      <li>Transactions are handled by the Solana program</li>
+                      <li>Winner receives 97% of pot (3% platform fee)</li>
+                      <li>Draws: Players get 99% back (1% platform fee)</li>
+                      <li>All payouts are automatic and secure</li>
                     </ul>
                   </div>
                 </div>

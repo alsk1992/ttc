@@ -9,6 +9,7 @@ import {
   emitMoveMade, 
   emitGameCompleted 
 } from '../services/websocket';
+import { processGamePayout } from '../services/payouts';
 import { createError } from '../middleware/errorHandler';
 import { 
   createGameSchema, 
@@ -194,6 +195,19 @@ router.post('/:id/move', async (req, res, next) => {
 
     if (winner || isDraw) {
       emitGameCompleted(id, { winner: winner || 'draw', gameState: updatedGame });
+      
+      // Process payout in the background
+      processGamePayout(updatedGame).then((result) => {
+        if (result.success) {
+          console.log(`Game ${id} payout processed: ${result.txSignature}`);
+          // Could emit a payout-completed event here
+        } else {
+          console.error(`Game ${id} payout failed: ${result.error}`);
+          // Could implement retry logic or manual payout queue
+        }
+      }).catch((error) => {
+        console.error(`Game ${id} payout error:`, error);
+      });
     }
 
     res.json({ 

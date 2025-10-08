@@ -7,6 +7,7 @@ import { Server } from 'socket.io';
 import dotenv from 'dotenv';
 
 import gameRoutes from './routes/games';
+import treasuryRoutes from './routes/treasury';
 import { initializeDatabase } from './services/database';
 import { initializeWebSocket } from './services/websocket';
 import { errorHandler } from './middleware/errorHandler';
@@ -37,6 +38,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/games', gameRoutes);
+app.use('/api/treasury', treasuryRoutes);
 
 app.use(errorHandler);
 

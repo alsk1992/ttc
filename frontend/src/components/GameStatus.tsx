@@ -73,7 +73,7 @@ export function GameStatus({ game, isPlayerInGame, playerSymbol }: GameStatusPro
         <div className="mt-3 p-3 bg-gray-50 border border-gray-200 rounded-md">
           <p className="text-sm text-gray-700">
             {game.betAmount > 0 
-              ? 'Bets have been returned to both players.' 
+              ? `Each player receives ${((game.betAmount * 0.99) / 1e9).toFixed(4)} SOL back (1% fee).` 
               : 'No one wins this round.'
             }
           </p>
@@ -98,15 +98,20 @@ export function GameStatus({ game, isPlayerInGame, playerSymbol }: GameStatusPro
           {isWinner ? 'Congratulations!' : 'Better luck next time!'}
         </p>
         {game.betAmount > 0 && (
-          <p className={clsx(
-            'text-xs mt-1',
+          <div className={clsx(
+            'text-xs mt-1 space-y-1',
             isWinner ? 'text-green-700' : 'text-red-700'
           )}>
-            {isWinner 
-              ? `You won ${(game.betAmount * 2 / 1e9).toFixed(4)} SOL!`
-              : `${winnerIsPlayer1 ? 'Player 1' : 'Player 2'} won ${(game.betAmount * 2 / 1e9).toFixed(4)} SOL.`
-            }
-          </p>
+            <p>
+              {isWinner 
+                ? `You won ${((game.betAmount * 2 * 0.97) / 1e9).toFixed(4)} SOL!`
+                : `${winnerIsPlayer1 ? 'Player 1' : 'Player 2'} won ${((game.betAmount * 2 * 0.97) / 1e9).toFixed(4)} SOL.`
+              }
+            </p>
+            <p className="text-gray-500">
+              (Pot: {(game.betAmount * 2 / 1e9).toFixed(4)} SOL - 3% platform fee)
+            </p>
+          </div>
         )}
       </div>
     );
