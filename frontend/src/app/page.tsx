@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Plus, Users, Trophy, Clock, Zap, Shield, Gamepad2 } from 'lucide-react';
+import { Plus, Users, Trophy, Clock, Zap, Shield, Gamepad2, Brain } from 'lucide-react';
 
 import { GameList } from '@/components/GameList';
 import { CreateGameModal } from '@/components/CreateGameModal';
@@ -108,11 +108,40 @@ export default function HomePage() {
             <div className="text-center">
               <div className="inline-flex flex-col items-center">
                 <p className="text-xl text-gray-500 mb-8">Ready to play?</p>
+                
+                {/* Practice Mode */}
+                <div className="mb-6">
+                  <p className="text-sm text-gray-400 mb-4">New to the game? Try practice mode first!</p>
+                  <div className="flex gap-3 justify-center">
+                    <a
+                      href="/practice?difficulty=easy"
+                      className="px-4 py-2 bg-green-600/20 border border-green-500/50 text-green-400 rounded-lg hover:bg-green-600/30 transition-all"
+                    >
+                      🤖 Easy AI
+                    </a>
+                    <a
+                      href="/practice?difficulty=medium"
+                      className="px-4 py-2 bg-yellow-600/20 border border-yellow-500/50 text-yellow-400 rounded-lg hover:bg-yellow-600/30 transition-all"
+                    >
+                      🤖 Medium AI
+                    </a>
+                    <a
+                      href="/practice?difficulty=hard"
+                      className="px-4 py-2 bg-red-600/20 border border-red-500/50 text-red-400 rounded-lg hover:bg-red-600/30 transition-all"
+                    >
+                      🤖 Hard AI
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="text-sm text-gray-500 mb-4">Or</div>
+                
+                {/* Wallet Connect */}
                 <div className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
                   <div className="relative px-8 py-4 bg-gray-900 border border-gray-800 rounded-lg leading-none">
                     <span className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                      Connect Your Wallet to Start Playing
+                      Connect Wallet for Real Games
                     </span>
                   </div>
                 </div>
@@ -136,13 +165,23 @@ export default function HomePage() {
             </p>
           </div>
           
-          <button
-            onClick={() => setShowCreateModal(true)}
-            className="relative group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
-          >
-            <Plus className="h-4 w-4" />
-            Create Game
-          </button>
+          <div className="flex gap-3">
+            <a
+              href="/practice"
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20 text-purple-300 font-medium rounded-lg border border-purple-500/30 hover:border-purple-400/50 transition-all duration-200"
+            >
+              <Brain className="h-4 w-4" />
+              Practice
+            </a>
+            
+            <button
+              onClick={() => setShowCreateModal(true)}
+              className="relative group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              <Plus className="h-4 w-4" />
+              Create Game
+            </button>
+          </div>
         </div>
 
         {/* Player Stats */}
