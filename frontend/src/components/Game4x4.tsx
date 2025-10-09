@@ -8,15 +8,15 @@ import dynamic from 'next/dynamic';
 import { useSound } from '@/hooks/useSound';
 
 // Dynamically import 3D component to avoid SSR issues
-const Board3D = dynamic(
-  () => import('./Game3D/Board3D').then(mod => mod.Board3D),
+const ConnectFourBoard3D = dynamic(
+  () => import('./Game3D/ConnectFourBoard3D').then(mod => mod.ConnectFourBoard3D),
   { 
     ssr: false,
     loading: () => (
       <div className="w-full h-[600px] bg-gray-900 rounded-lg flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-400">Loading 3D board...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600 mx-auto"></div>
+          <p className="mt-4 text-gray-400">Loading 3D Connect Four board...</p>
         </div>
       </div>
     )
@@ -142,14 +142,14 @@ export function Game4x4({ mode, gameId, betAmount = 0 }: Game4x4Props) {
       <div className="mb-6 text-center">
         <h1 className="text-4xl font-bold mb-2 flex items-center justify-center gap-3">
           <Trophy className="h-10 w-10 text-yellow-500 animate-pulse" />
-          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            3D 4x4 Tic-Tac-Toe
+          <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
+            3D Connect Four · 四连棋
           </span>
           {mode === 'practice' && (
             <span className="text-2xl text-gray-500">(Practice)</span>
           )}
         </h1>
-        <p className="text-gray-400 text-lg">Get 4 in a row to win in this 3D experience!</p>
+        <p className="text-gray-400 text-lg">Drop your pieces to get 4 in a row - just like real Connect Four!</p>
       </div>
 
       {/* Game Info */}
@@ -198,7 +198,7 @@ export function Game4x4({ mode, gameId, betAmount = 0 }: Game4x4Props) {
       </div>
 
       {/* 3D Game Board */}
-      <Board3D
+      <ConnectFourBoard3D
         board={board}
         onCellClick={makeMove}
         disabled={gameStatus !== 'active'}
@@ -208,9 +208,9 @@ export function Game4x4({ mode, gameId, betAmount = 0 }: Game4x4Props) {
       {/* Instructions */}
       <div className="mt-6 bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
         <p className="text-sm text-blue-300">
-          <strong>How to play:</strong> Click on any empty cell to place your piece. 
+          <strong>怎么玩 How to play:</strong> Click on a column to drop your piece. 
           Get 4 in a row (horizontal, vertical, or diagonal) to win! 
-          Use your mouse to rotate the 3D board for a better view.
+          Rotate the 3D board with your mouse for the best view. 就像真正的四连棋!
         </p>
       </div>
     </div>
