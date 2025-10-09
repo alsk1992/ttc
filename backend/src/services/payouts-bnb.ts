@@ -53,19 +53,28 @@ export async function processGamePayout(game: GameState): Promise<{
     const payouts = calculatePayouts(game.betAmount, isWin, isDraw);
     const txHashes: string[] = [];
     
-    // Send treasury fee if applicable
-    if (payouts.treasuryFee > 0 && TREASURY_CONFIG.TREASURY_WALLET !== 'YOUR_TREASURY_WALLET_ADDRESS_HERE') {
-      console.log(`Sending treasury fee: ${weiToBnb(BigInt(payouts.treasuryFee))} BNB`);
+    // Handle treasury fee
+    if (payouts.treasuryFee > 0) {
+      const treasuryWallet = TREASURY_CONFIG.TREASURY_WALLET !== 'YOUR_BSC_TREASURY_WALLET_ADDRESS_HERE' 
+        ? TREASURY_CONFIG.TREASURY_WALLET 
+        : gameWallet.address; // Default to game wallet if not set
       
-      const treasuryTx = await gameWallet.sendTransaction({
-        to: TREASURY_CONFIG.TREASURY_WALLET,
-        value: BigInt(payouts.treasuryFee)
-      });
-      
-      const treasuryReceipt = await treasuryTx.wait();
-      if (treasuryReceipt) {
-        txHashes.push(treasuryReceipt.hash);
-        console.log(`Treasury fee sent: ${treasuryReceipt.hash}`);
+      // If treasury is same as game wallet, fee stays in wallet (no transfer needed)
+      if (treasuryWallet.toLowerCase() !== gameWallet.address.toLowerCase()) {
+        console.log(`Sending treasury fee: ${weiToBnb(BigInt(payouts.treasuryFee))} BNB`);
+        
+        const treasuryTx = await gameWallet.sendTransaction({
+          to: treasuryWallet,
+          value: BigInt(payouts.treasuryFee)
+        });
+        
+        const treasuryReceipt = await treasuryTx.wait();
+        if (treasuryReceipt) {
+          txHashes.push(treasuryReceipt.hash);
+          console.log(`Treasury fee sent: ${treasuryReceipt.hash}`);
+        }
+      } else {
+        console.log(`Treasury fee ${weiToBnb(BigInt(payouts.treasuryFee))} BNB retained in game wallet`);
       }
     }
     

@@ -1,7 +1,8 @@
 // Treasury configuration for BNB Chain
 export const TREASURY_CONFIG = {
-  // Treasury wallet address - UPDATE THIS with your actual BSC wallet
-  TREASURY_WALLET: 'YOUR_BSC_TREASURY_WALLET_ADDRESS_HERE',
+  // Treasury wallet address - Defaults to game wallet if not set
+  // Only set this if you want fees sent to a DIFFERENT wallet
+  TREASURY_WALLET: process.env.BSC_TREASURY_WALLET_ADDRESS || 'YOUR_BSC_TREASURY_WALLET_ADDRESS_HERE',
   
   // Fee percentages
   WIN_FEE_PERCENT: 3,     // 3% fee on wins
