@@ -242,10 +242,10 @@ export function PracticeGame({ difficulty }: PracticeGameProps) {
       {/* Practice Mode Info */}
       <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
         <p className="text-sm text-blue-800">
-          <strong>Practice Mode:</strong> Play against AI to improve your skills. No SOL required!
+          <strong>练习模式 Practice Mode:</strong> 与AI对战提升技能 Play AI to improve. 免费 No BNB required!
         </p>
         <p className="text-xs text-blue-600 mt-1">
-          Ready for real games? Head back to the lobby to play against other players and bet SOL.
+          准备好真实对战? Ready for real games? 返回大厅与其他玩家对战并下注BNB Back to lobby to bet BNB.
         </p>
       </div>
     </div>

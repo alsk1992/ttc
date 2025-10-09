@@ -1,16 +1,10 @@
 'use client';
 
-import { Suspense, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { PracticeGame } from '@/components/PracticeGame';
-import { Difficulty } from '@/lib/ai-player';
+import { Suspense } from 'react';
+import { Game4x4 } from '@/components/Game4x4';
 
 function PracticeGameContent() {
-  const searchParams = useSearchParams();
-  const difficultyParam = searchParams.get('difficulty') as Difficulty | null;
-  const [difficulty] = useState<Difficulty>(difficultyParam || 'medium');
-
-  return <PracticeGame difficulty={difficulty} />;
+  return <Game4x4 mode="practice" />;
 }
 
 export default function PracticePage() {
@@ -18,8 +12,8 @@ export default function PracticePage() {
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading practice mode...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600 mx-auto"></div>
+          <p className="mt-4 text-gray-400">加载中 Loading 3D practice mode...</p>
         </div>
       </div>
     }>
