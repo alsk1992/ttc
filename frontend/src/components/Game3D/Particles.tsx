@@ -79,8 +79,6 @@ export function WinningParticles({ count = 100, color = '#10b981' }: ParticlesPr
       <pointsMaterial
         size={0.05}
         color={color}
-        emissive={color}
-        emissiveIntensity={0.5}
         transparent
         opacity={0.8}
         depthWrite={false}
