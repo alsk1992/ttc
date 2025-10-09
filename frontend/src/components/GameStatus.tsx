@@ -73,8 +73,8 @@ export function GameStatus({ game, isPlayerInGame, playerSymbol }: GameStatusPro
         <div className="mt-3 p-3 bg-gray-50 border border-gray-200 rounded-md">
           <p className="text-sm text-gray-700">
             {game.betAmount > 0 
-              ? `Each player receives ${((game.betAmount * 0.99) / 1e9).toFixed(4)} SOL back (1% fee).` 
-              : 'No one wins this round.'
+              ? `每人收到 Each receives ${((game.betAmount * 0.99) / 1e18).toFixed(4)} BNB back (1%费用 fee).` 
+              : '无人胜出 No winner this round.'
             }
           </p>
         </div>
@@ -104,12 +104,12 @@ export function GameStatus({ game, isPlayerInGame, playerSymbol }: GameStatusPro
           )}>
             <p>
               {isWinner 
-                ? `You won ${((game.betAmount * 2 * 0.97) / 1e9).toFixed(4)} SOL!`
-                : `${winnerIsPlayer1 ? 'Player 1' : 'Player 2'} won ${((game.betAmount * 2 * 0.97) / 1e9).toFixed(4)} SOL.`
+                ? `你赢了 You won ${((game.betAmount * 2 * 0.97) / 1e18).toFixed(4)} BNB!`
+                : `${winnerIsPlayer1 ? '玩家1 Player 1' : '玩家2 Player 2'} 赢得 won ${((game.betAmount * 2 * 0.97) / 1e18).toFixed(4)} BNB.`
               }
             </p>
             <p className="text-gray-500">
-              (Pot: {(game.betAmount * 2 / 1e9).toFixed(4)} SOL - 3% platform fee)
+              (奖池 Pot: {(game.betAmount * 2 / 1e18).toFixed(4)} BNB - 3%平台费 platform fee)
             </p>
           </div>
         )}
@@ -119,7 +119,7 @@ export function GameStatus({ game, isPlayerInGame, playerSymbol }: GameStatusPro
 
   return (
     <div className="card p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Game Status</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">游戏状态 Game Status</h3>
       
       <div className={clsx(
         'flex items-center p-3 border rounded-md',

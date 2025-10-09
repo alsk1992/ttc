@@ -174,7 +174,7 @@ export function Game4x4({ mode, gameId, betAmount = 0 }: Game4x4Props) {
               <div>
                 <p className="text-sm text-gray-400">Bet</p>
                 <p className="text-2xl font-bold text-white">
-                  {betAmount > 0 ? `${(betAmount / 1e9).toFixed(2)} SOL` : 'Free'}
+                  {betAmount > 0 ? `${(betAmount / 1e18).toFixed(4)} BNB` : '免费 Free'}
                 </p>
               </div>
             </>

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import clsx from 'clsx';
 
 import { api, ApiError } from '@/lib/api';
-import { formatSol, shortenAddress } from '@/lib/solana';
+import { formatSol, shortenAddress } from '@/lib/bnb';
 import { GameListItem } from '@/types';
 
 export function GameList() {
@@ -269,7 +269,7 @@ export function GameList() {
                     {game.betAmount > 0 ? (
                       <div className="flex items-center text-sm font-medium text-yellow-400">
                         <Coins className="h-3 w-3 mr-1" />
-                        {formatSol(game.betAmount, 4)} SOL
+                        {formatSol(game.betAmount, 4)} BNB
                       </div>
                     ) : (
                       <div className="flex items-center text-sm font-medium text-green-400">

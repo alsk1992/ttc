@@ -7,7 +7,7 @@ import { X, Coins } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 import { api, ApiError } from '@/lib/api';
-import { solToLamports } from '@/lib/solana';
+import { solToLamports } from '@/lib/bnb';
 
 interface CreateGameModalProps {
   isOpen: boolean;
@@ -89,13 +89,13 @@ export function CreateGameModal({ isOpen, onClose }: CreateGameModalProps) {
           <div className="sm:flex sm:items-start">
             <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
               <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
-                Create New Game
+                创建新游戏 Create New Game
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="betAmount" className="block text-sm font-medium text-gray-700 mb-2">
-                    Bet Amount (SOL)
+                    下注金额 Bet Amount (BNB)
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -114,18 +114,18 @@ export function CreateGameModal({ isOpen, onClose }: CreateGameModalProps) {
                     />
                   </div>
                   <p className="mt-1 text-xs text-gray-500">
-                    Set to 0 for a free game. Both players must deposit the bet amount to play.
+                    设置0为免费游戏 set 0 for free · 双方都需要存入下注金额
                   </p>
                 </div>
 
                 <div className="bg-yellow-50 border border-yellow-200 rounded-md p-3">
                   <div className="text-sm text-yellow-800">
-                    <p className="font-medium mb-1">How betting works:</p>
+                    <p className="font-medium mb-1">下注规则 How betting works:</p>
                     <ul className="list-disc list-inside space-y-1 text-xs">
-                      <li>Both players deposit the bet amount into the game</li>
-                      <li>Winner receives 97% of pot (3% platform fee)</li>
-                      <li>Draws: Players get 99% back (1% platform fee)</li>
-                      <li>All payouts are automatic and secure</li>
+                      <li>双方存入下注金额 Both deposit bet amount</li>
+                      <li>赢家获得97%奖池 Winner gets 97% (3%平台费)</li>
+                      <li>平局：返还99% Draws: 99% back (1%费用)</li>
+                      <li>自动安全支付 Automatic secure payouts</li>
                     </ul>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export function CreateGameModal({ isOpen, onClose }: CreateGameModalProps) {
                       isCreating || !connected ? 'btn-disabled' : 'btn-primary'
                     }`}
                   >
-                    {isCreating ? 'Creating...' : 'Create Game'}
+                    {isCreating ? '创建中...' : '创建游戏 Create'}
                   </button>
                   <button
                     type="button"
@@ -146,7 +146,7 @@ export function CreateGameModal({ isOpen, onClose }: CreateGameModalProps) {
                     disabled={isCreating}
                     className="w-full sm:w-auto btn btn-secondary"
                   >
-                    Cancel
+                    取消 Cancel
                   </button>
                 </div>
               </form>

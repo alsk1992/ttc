@@ -9,13 +9,13 @@ import { Navbar } from '@/components/Navbar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Solana Tic-Tac-Toe',
-  description: 'Play tic-tac-toe on Solana with SOL betting',
-  keywords: ['Solana', 'tic-tac-toe', 'blockchain', 'crypto', 'gaming'],
-  authors: [{ name: 'Solana Tic-Tac-Toe Team' }],
+  title: '井字游戏 · Tic-Tac-Toe on BNB',
+  description: 'Play Tic-Tac-Toe on BNB Chain with crypto betting · 币安链上的井字游戏',
+  keywords: ['BNB', 'BSC', '井字游戏', 'tic-tac-toe', 'blockchain', 'crypto', 'gaming', '币安链'],
+  authors: [{ name: '井字游戏 Team' }],
   openGraph: {
-    title: 'Solana Tic-Tac-Toe',
-    description: 'Play tic-tac-toe on Solana with SOL betting',
+    title: '井字游戏 · Tic-Tac-Toe on BNB',
+    description: 'Play Tic-Tac-Toe on BNB Chain · 币安链上的井字游戏',
     type: 'website',
   },
 };

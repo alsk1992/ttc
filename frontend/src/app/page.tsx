@@ -42,23 +42,23 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto">
             {/* Hero Section */}
             <div className="text-center mb-16">
-              <div className="inline-flex items-center px-4 py-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/30 rounded-full text-blue-400 text-sm mb-8">
+              <div className="inline-flex items-center px-4 py-2 bg-yellow-500/10 backdrop-blur-sm border border-yellow-500/30 rounded-full text-yellow-400 text-sm mb-8">
                 <Zap className="h-4 w-4 mr-2" />
-                Powered by Solana blockchain
+                Powered by BNB Chain · 币安智能链
               </div>
               
               <h1 className="text-7xl md:text-8xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Solana
+                <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 bg-clip-text text-transparent">
+                  井字游戏
                 </span>
                 <br />
                 <span className="text-gray-100">Tic-Tac-Toe</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                Experience the classic game reimagined on the blockchain.
+                经典游戏 meets blockchain innovation · 区块链创新
                 <br className="hidden md:block" />
-                Challenge players worldwide with optional SOL betting.
+                Challenge 全球玩家 with BNB betting · 币安币下注
               </p>
             </div>
             
@@ -70,9 +70,9 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6">
                     <Gamepad2 className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-100 mb-4">Play & Earn</h3>
+                  <h3 className="text-2xl font-bold text-gray-100 mb-4">玩赚 Play & Earn</h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Challenge opponents in real-time matches with optional SOL betting to make every game exciting.
+                    实时对战 real-time matches · 可选BNB下注 optional BNB betting · 每局都精彩
                   </p>
                 </div>
               </div>
@@ -83,9 +83,9 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mb-6">
                     <Shield className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-100 mb-4">Secure & Fair</h3>
+                  <h3 className="text-2xl font-bold text-gray-100 mb-4">安全 Secure & 公平 Fair</h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Smart contracts ensure transparent gameplay and automatic prize distribution.
+                    智能合约 smart contracts · 透明游戏 transparent · 自动分配奖金
                   </p>
                 </div>
               </div>
@@ -96,9 +96,9 @@ export default function HomePage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-6">
                     <Zap className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-100 mb-4">Lightning Fast</h3>
+                  <h3 className="text-2xl font-bold text-gray-100 mb-4">闪电快速 Lightning Fast</h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Experience instant moves with real-time WebSocket updates and Solana's high-speed network.
+                    即时操作 instant moves · 实时更新 real-time · BNB高速网络
                   </p>
                 </div>
               </div>
@@ -111,35 +111,35 @@ export default function HomePage() {
                 
                 {/* Practice Mode */}
                 <div className="mb-6">
-                  <p className="text-sm text-gray-400 mb-4">New to the game? Try practice mode first!</p>
+                  <p className="text-sm text-gray-400 mb-4">新手 new player? 先试试练习模式 try practice first!</p>
                   <div className="flex gap-3 justify-center flex-wrap">
                     <a
                       href="/practice?difficulty=easy"
                       className="px-4 py-2 bg-green-600/20 border border-green-500/50 text-green-400 rounded-lg hover:bg-green-600/30 transition-all"
                     >
-                      🤖 Easy AI
+                      🤖 简单 Easy
                     </a>
                     <a
                       href="/practice?difficulty=medium"
                       className="px-4 py-2 bg-yellow-600/20 border border-yellow-500/50 text-yellow-400 rounded-lg hover:bg-yellow-600/30 transition-all"
                     >
-                      🤖 Medium AI
+                      🤖 中等 Medium
                     </a>
                     <a
                       href="/practice?difficulty=hard"
                       className="px-4 py-2 bg-red-600/20 border border-red-500/50 text-red-400 rounded-lg hover:bg-red-600/30 transition-all"
                     >
-                      🤖 Hard AI
+                      🤖 困难 Hard
                     </a>
                   </div>
                   
                   <div className="mt-4">
-                    <p className="text-sm text-gray-400 mb-4">Or try something new!</p>
+                    <p className="text-sm text-gray-400 mb-4">或者试试新玩法 or try something new!</p>
                     <a
                       href="/game-3d"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500/50 text-purple-300 rounded-lg hover:from-purple-600/40 hover:to-pink-600/40 transition-all font-medium"
                     >
-                      🎮 3D 4x4 Tic-Tac-Toe
+                      🎮 3D 4x4 井字游戏
                       <span className="text-xs bg-purple-500/20 px-2 py-1 rounded">NEW!</span>
                     </a>
                   </div>
@@ -152,7 +152,7 @@ export default function HomePage() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
                   <div className="relative px-8 py-4 bg-gray-900 border border-gray-800 rounded-lg leading-none">
                     <span className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                      Connect Wallet for Real Games
+                      连接钱包 Connect Wallet · 真实对战
                     </span>
                   </div>
                 </div>
@@ -170,9 +170,9 @@ export default function HomePage() {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Game Lobby</h1>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">游戏大厅 Game Lobby</h1>
             <p className="text-gray-400 mt-2 text-lg">
-              Create a new game or join an existing one
+              创建新游戏 create new · 加入现有游戏 join existing
             </p>
           </div>
           
@@ -182,7 +182,7 @@ export default function HomePage() {
               className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20 text-purple-300 font-medium rounded-lg border border-purple-500/30 hover:border-purple-400/50 transition-all duration-200"
             >
               <Brain className="h-4 w-4" />
-              Practice
+              练习 Practice
             </a>
             
             <button
@@ -190,7 +190,7 @@ export default function HomePage() {
               className="relative group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
             >
               <Plus className="h-4 w-4" />
-              Create Game
+              创建游戏 Create
             </button>
           </div>
         </div>
@@ -199,26 +199,26 @@ export default function HomePage() {
         {!statsLoading && stats && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <StatsCard
-              title="Games Played"
+              title="游戏数 Games"
               value={stats.gamesPlayed}
               icon={<Users className="h-5 w-5" />}
               color="blue"
             />
             <StatsCard
-              title="Games Won"
+              title="胜利 Wins"
               value={stats.gamesWon}
               icon={<Trophy className="h-5 w-5" />}
               color="green"
             />
             <StatsCard
-              title="Win Rate"
+              title="胜率 Win Rate"
               value={stats.gamesPlayed > 0 ? `${Math.round((stats.gamesWon / stats.gamesPlayed) * 100)}%` : '0%'}
               icon={<Trophy className="h-5 w-5" />}
               color="purple"
             />
             <StatsCard
-              title="Total Earnings"
-              value={`${(stats.totalEarnings / 1e9).toFixed(2)} SOL`}
+              title="总收益 Earnings"
+              value={`${(stats.totalEarnings / 1e18).toFixed(4)} BNB`}
               icon={<Trophy className="h-5 w-5" />}
               color="yellow"
             />

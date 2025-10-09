@@ -17,9 +17,9 @@ export function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
-                <Trophy className="h-8 w-8 text-primary-600" />
+                <Trophy className="h-8 w-8 text-yellow-500" />
                 <span className="ml-2 text-xl font-bold text-gray-100">
-                  Solana Tic-Tac-Toe
+                  井字游戏 · TTT
                 </span>
               </div>
             </Link>
@@ -34,14 +34,14 @@ export function Navbar() {
                   className="flex items-center px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
                 >
                   <Home className="h-4 w-4 mr-2" />
-                  Lobby
+                  大厅 Lobby
                 </Link>
                 <Link
                   href="/history"
                   className="flex items-center px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md transition-colors"
                 >
                   <History className="h-4 w-4 mr-2" />
-                  History
+                  历史 History
                 </Link>
               </>
             )}
@@ -79,7 +79,7 @@ export function Navbar() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Home className="h-5 w-5 mr-3" />
-                  Lobby
+                  大厅 Lobby
                 </Link>
                 <Link
                   href="/history"
@@ -87,7 +87,7 @@ export function Navbar() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <History className="h-5 w-5 mr-3" />
-                  History
+                  历史 History
                 </Link>
               </>
             )}
