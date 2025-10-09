@@ -9,7 +9,7 @@ const getProvider = () => {
 };
 
 // Game wallet - this holds funds during games and processes payouts
-const getGameWallet = (): ethers.Wallet => {
+export const getGameWallet = (): ethers.Wallet => {
   if (!process.env.GAME_WALLET_PRIVATE_KEY) {
     throw new Error('GAME_WALLET_PRIVATE_KEY not set in environment');
   }

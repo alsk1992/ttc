@@ -1,6 +1,6 @@
 import express from 'express';
 import { z } from 'zod';
-import { createError } from '../utils/errors';
+import { createError } from '../middleware/errorHandler';
 import { validateGameId } from '../utils/validation';
 import { getGameWallet, verifyDeposit, getEscrowInstructions } from '../services/payouts-bnb';
 import * as db from '../services/database';
