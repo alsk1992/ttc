@@ -9,6 +9,13 @@ export interface GameState {
   betAmount: number;
   createdAt: Date;
   updatedAt: Date;
+  // BNB escrow fields
+  player1Deposited?: boolean;
+  player2Deposited?: boolean;
+  player1TxHash?: string;
+  player2TxHash?: string;
+  payoutTxHashes?: string[];
+  network?: 'BSC' | 'SOL';
 }
 
 export interface CreateGameRequest {
